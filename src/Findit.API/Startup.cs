@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Findit.API.Configuration;
+using Findit.API.Infrastructure.Automapper;
+using Findit.API.Infrastructure.Services;
+using Findit.API.Services.BookmarkService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +33,14 @@ namespace Findit.API
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddOptions();
+            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
+
+            //bootstrap automapper
+            services.AddAutomapper();
+            //bootstrap services
+            services.AddServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
