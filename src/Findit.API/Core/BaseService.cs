@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Findit.API.Services
+namespace Findit.API.Core
 {
     public class BaseService
     {

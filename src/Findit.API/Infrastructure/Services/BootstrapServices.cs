@@ -8,6 +8,8 @@ namespace Findit.API.Infrastructure.Services
         public static void AddServices(this IServiceCollection services)
         {
             services.AddSingleton<IBookmarkService, BookmarkService>();
+			services.AddSingleton<IPlacesService, PlacesService>();
+			services.AddSingleton<IReviewsService, ReviewsService>();
         }
     }
 }

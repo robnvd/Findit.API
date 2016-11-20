@@ -7,6 +7,7 @@ namespace Findit.API.Infrastructure.Automapper
     public static class AutomapperBootstraper
     {
         private static MapperConfiguration _mapperConfiguration;
+
         public static void AddAutomapper(this IServiceCollection services)
         {
             _mapperConfiguration = GetConfiguration();

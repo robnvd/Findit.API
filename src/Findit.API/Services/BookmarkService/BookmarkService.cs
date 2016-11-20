@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Findit.API.Configuration;
+using Findit.API.Core;
 using Findit.DL.Entities;
 using Findit.DL.Repositories;
 using Findit.DTO;
@@ -49,7 +50,7 @@ namespace Findit.API.Services.BookmarkService
 
         public void RemoveBookmark(string username, string placeId)
         {
-            throw new System.NotImplementedException();
+			_bookmarksesRepository.Delete(x => x.Place.Id.Equals(placeId) && x.CreatedBy.Equals(username));
         }
     }
 }
