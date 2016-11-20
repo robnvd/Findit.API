@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Findit.API.Configuration;
+using Findit.DL.Entities;
 using Findit.DL.Repositories;
 using Findit.DTO;
 using Microsoft.Extensions.Options;
@@ -40,8 +41,10 @@ namespace Findit.API.Services.BookmarkService
 
         public void AddBookmark(string username, BookmarkDto bookmark)
         {
-            bookmark.defaults
-            _bookmarksesRepository.
+			//bookmark.defaults
+			bookmark.CreatedBy = username;
+			var entity = Mapper.Map<Bookmark>(bookmark);
+			_bookmarksesRepository.Insert(entity);
         }
 
         public void RemoveBookmark(string username, string placeId)
