@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Findit.API.Configuration;
+﻿using Findit.API.Configuration;
 using Findit.API.Infrastructure.Automapper;
 using Findit.API.Infrastructure.Services;
-using Findit.API.Services.BookmarkService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Stormpath.AspNetCore;
-using Stormpath.Configuration.Abstractions;
+using Findit.API.Core;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Findit.API
 {
@@ -33,35 +31,15 @@ namespace Findit.API
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			var stormpathConfig = Configuration.Get<Stormpath>("Stormpath");
-			services.AddStormpath(new StormpathConfiguration
-			{
-				Application = new ApplicationConfiguration
-				{
-					Href = stormpathConfig.AppHref,
-					Name = stormpathConfig.AppName
-				},
-				Client = new ClientConfiguration
-				{
-					ApiKey = new ClientApiKeyConfiguration
-					{
-						Id = stormpathConfig.ClientId,
-						Secret = stormpathConfig.ClientSecret
-					}
-				},
-				Web = new WebConfiguration
-				{
-					VerifyEmail = new WebVerifyEmailRouteConfiguration
-					{
-						Enabled = false
-					}
-				}
-			});
-
 			// Add framework services.
 			services.AddMvc(options =>
 			{
 				options.Filters.Add(new GlobalExceptionFilter());
+			});
+
+			services.AddCors(options =>
+			{
+				options.AddPolicy("AllowAll", builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 			});
 
 			services.AddOptions();
@@ -79,7 +57,15 @@ namespace Findit.API
 			loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 			loggerFactory.AddDebug();
 
-			app.UseStormpath();
+			app.UseCors("AllowAll");
+
+			var options = new JwtBearerOptions
+			{
+				Audience = Configuration["Auth0:ClientId"],
+				Authority = Configuration["Auth0:Authority"]
+			};
+
+			app.UseJwtBearerAuthentication(options);
 
 			app.UseMvc();
 		}

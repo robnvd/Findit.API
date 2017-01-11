@@ -1,7 +1,10 @@
-﻿using System;
+using System;
 using Findit.API.Core;
 using Findit.DTO;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Findit.API
 {
@@ -14,20 +17,17 @@ namespace Findit.API
 			_reviewsService = reviewsService;
 		}
 
-		// GET: api/Reviews/MyReviews/:username
+		// GET: api/Reviews/MyReviews
 		[HttpGet]
-		[Route("MyReviews/{username}")]
-		public IActionResult MyReviews(string username)
+		[Route("MyReviews")]
+		public IActionResult MyReviews()
 		{
-			if (User.Identity.Name.Equals(username))
-			{
-				var dtos = _reviewsService.GetReviewsByUser(username);
-				return Ok(dtos);
-			}
-			return Unauthorized();
+			var dtos = _reviewsService.GetReviewsByUser(User.Identity.GetClaim("name"));
+			return Ok(dtos);
 		}
 
 		// GET: api/Reviews/PlaceReviews/:placeId
+		[AllowAnonymous]
 		[HttpGet]
 		[Route("PlaceReviews/{placeId}")]
 		public IActionResult PlaceReviews(string placeId)
@@ -50,7 +50,7 @@ namespace Findit.API
 		[Route("AddReview")]
 		public IActionResult AddReview([FromBody]ReviewDto review)
 		{
-			var newReview = _reviewsService.AddReview(User.Identity.Name, review);
+			var newReview = _reviewsService.AddReview(User.Identity.GetClaim("name"), review);
 			return Ok(newReview);
 		}
 
@@ -59,7 +59,7 @@ namespace Findit.API
 		[Route("RemoveReview")]
 		public IActionResult RemoveReview([FromBody]ReviewDto review)
 		{
-			_reviewsService.RemoveReview(User.Identity.Name, review);
+			_reviewsService.RemoveReview(User.Identity.GetClaim("name"), review);
 			return Ok();
 		}
 
@@ -68,7 +68,7 @@ namespace Findit.API
 		[Route("ApproveReview")]
 		public IActionResult ApproveReview([FromBody] ReviewDto review)
 		{
-			_reviewsService.ApproveReview(User.Identity.Name, review);
+			_reviewsService.ApproveReview(User.Identity.GetClaim("name"), review);
 			return Ok();
 		}
 	}

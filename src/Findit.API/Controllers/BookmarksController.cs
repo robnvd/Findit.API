@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using Findit.API.Core;
 using Findit.API.Services.BookmarkService;
 using Findit.DTO;
@@ -8,7 +9,7 @@ namespace Findit.API
 {
 	public class BookmarksController : BaseController
 	{
-		private readonly IBookmarkService _bookmarkService; 
+		private readonly IBookmarkService _bookmarkService;
 
 		public BookmarksController(IBookmarkService bookmakService)
 		{
@@ -17,41 +18,37 @@ namespace Findit.API
 
 		// GET: api/Bookmarks/MyBookmarks
 		[HttpGet]
-		[Route("MyBookmarks/{username}")]
-		public IActionResult Get(string username)
+		[Route("MyBookmarks")]
+		public IActionResult Get()
 		{
-			if (!User.Identity.Name.Equals(username)) return Unauthorized();
-			var dtos = _bookmarkService.GetBookmarksByUser(username);
+			var dtos = _bookmarkService.GetBookmarksByUser(User.Identity.GetClaim("name"));
 			return Ok(dtos);
 		}
 
-		// GET: api/Bookmarks/PlaceBookmark/username/placeId
+		// GET: api/Bookmarks/PlaceBookmark/placeId
 		[HttpGet]
-		[Route("PlaceBookmark/{username}/{placeId}")]
-		public IActionResult PlaceBookmark(string username, string placeId)
+		[Route("PlaceBookmark/{placeId}")]
+		public IActionResult PlaceBookmark(string placeId)
 		{
-			if (!username.Equals(User.Identity.Name)) return Unauthorized();
-			var dto = _bookmarkService.GetBookmarkByUsernameAndPlaceId(User.Identity.Name, placeId);
+			var dto = _bookmarkService.GetBookmarkByUsernameAndPlaceId(User.Identity.GetClaim("name"), placeId);
 			return Ok(dto);
 		}
 
 		// POST: api/Bookmarks/AddBookmark
 		[HttpPost]
-		[Route("AddBookmark/{username}")]
-		public IActionResult Post(string username, [FromBody]BookmarkDto bookmark)
+		[Route("AddBookmark")]
+		public IActionResult Post([FromBody]BookmarkDto bookmark)
 		{
-			if (!username.Equals(User.Identity.Name)) return Unauthorized();
-			_bookmarkService.AddBookmark(User.Identity.Name, bookmark);
+			_bookmarkService.AddBookmark(User.Identity.GetClaim("name"), bookmark);
 			return Ok();
 		}
 
-		// DELETE: api/Bookmarks/RemoveBookmark
+		// DELETE: api/Bookmarks/RemoveBookmark/:placeId
 		[HttpDelete]
-		[Route("RemoveBookmark/{username}/{placeId}")]
-		public IActionResult Delete(string username, string placeId)
+		[Route("RemoveBookmark/{placeId}")]
+		public IActionResult Delete(string placeId)
 		{
-			if (!username.Equals(User.Identity.Name)) return Unauthorized();
-			_bookmarkService.RemoveBookmark(User.Identity.Name, placeId);
+			_bookmarkService.RemoveBookmark(User.Identity.GetClaim("name"), placeId);
 			return Ok();
 		}
 	}

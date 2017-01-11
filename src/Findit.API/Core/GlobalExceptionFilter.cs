@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Findit.API
+namespace Findit.API.Core
 {
 	public class GlobalExceptionFilter : IExceptionFilter, IDisposable
 	{

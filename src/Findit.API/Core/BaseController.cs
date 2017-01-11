@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace Findit.API.Core
 {
@@ -8,6 +9,6 @@ namespace Findit.API.Core
 	[Route("api/[controller]")]
 	public class BaseController : Controller
 	{
-		
+
 	}
 }

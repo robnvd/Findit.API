@@ -37,11 +37,11 @@ namespace Findit.API
 
 		public ReviewDto AddReview(string username, ReviewDto review)
 		{
-			//review.Defaults(username);
-			//review.Place.string = string.Newstring();
+			review.AuditCreate(username);
 
 			//TODO check if user is moderator
 			review.Approve(username);
+
 			var entity = Mapper.Map<Review>(review);
 			_reviewsRepository.Insert(entity);
 			return Mapper.Map<ReviewDto>(entity);
