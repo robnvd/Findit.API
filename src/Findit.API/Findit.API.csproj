@@ -12,20 +12,11 @@
 		<Compile Include="**\*.cs" />
 		<EmbeddedResource Include="**\*.resx" />
 		<EmbeddedResource Include="compiler\resources\**\*" />
-		<Content Include="wwwroot;Views;Areas\**\Views;appsettings.json;web.config" Exclude="appsettings.json">
+		<Content Include="wwwroot;Views;Areas\**\Views;web.config">
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Content>
 		<Content Remove="Views" />
 		<Content Remove="wwwroot" />
-		<Compile Remove="Services\BaseService.cs" />
-		<Compile Remove="Controllers\IBookmarksService.cs" />
-		<Content Include="appsettings.json">
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Compile Remove="Configuration\Stormpath.cs" />
-		<Compile Remove="Filters\CheckOwnerAttribute.cs" />
-		<Compile Remove="Controllers\ValuesController.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="../Findit.DL/Findit.DL.csproj">
@@ -94,8 +85,14 @@
 	<ItemGroup>
 		<Folder Include="Services\PlacesService\" />
 		<Folder Include="Services\ReviewsService\" />
+		<Folder Include="Services\BookmarkService\" />
 		<Folder Include="Core\" />
-		<Folder Include="Filters\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="appsettings.json">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
 		<DefineConstants>$(DefineConstants);RELEASE</DefineConstants>

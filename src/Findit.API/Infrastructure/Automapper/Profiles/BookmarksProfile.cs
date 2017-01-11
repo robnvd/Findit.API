@@ -8,7 +8,8 @@ namespace Findit.API.Infrastructure.Automapper.Profiles
     {
         public BookmarksProfile()
         {
-            CreateMap<Bookmark, BookmarkDto>();
+            CreateMap<Bookmark, BookmarkDto>()
+                .ForMember(dest => dest.PlaceId, a => a.MapFrom(src => src.Place.Id));
             CreateMap<BookmarkDto, Bookmark>();
         }
     }

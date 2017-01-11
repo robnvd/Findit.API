@@ -17,7 +17,7 @@ namespace Findit.DTO.Base
 		/// <summary>
 		/// When it was created
 		/// </summary>
-		public DateTime CreatedOn { get; }
+		public DateTime CreatedOn { get; set;}
 
 		/// <summary>
 		/// who created the record
