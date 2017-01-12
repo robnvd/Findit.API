@@ -9,6 +9,6 @@ namespace Findit.DTO
 
 		public string BookmarkText { get; set; }
 
-		public virtual PlaceDto Place { get; set; }
+		public PlaceDto Place { get; set; }
 	}
 }

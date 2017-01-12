@@ -12,13 +12,13 @@ namespace Findit.DL.Entities.Base
 	{
 		public BaseEntity()
 		{
-			Id = ObjectId.GenerateNewId().ToString();
+			//Id = ObjectId.GenerateNewId().ToString();
 		}
 
 		/// <summary>
 		/// id in string format
 		/// </summary>
-		[BsonElement(Order = 0)]
+		[BsonElement("_id", Order = 0)]
 		[BsonRepresentation(BsonType.ObjectId)]
 		public string Id { get; set; }
 

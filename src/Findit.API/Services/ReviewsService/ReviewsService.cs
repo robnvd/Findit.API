@@ -50,7 +50,7 @@ namespace Findit.API
 		public void RemoveReview(string username, ReviewDto review)
 		{
 			//TODO Check for permissions
-			_reviewsRepository.Delete(ent => ent.Id.Equals(review.Id));
+			_reviewsRepository.Delete(ent => ent.ObjectId.ToString().Equals(review.Id));
 		}
 
 		public void ApproveReview(string username, ReviewDto review)

@@ -7,6 +7,6 @@ namespace Findit.DL.Entities
 	{
 		public string BookmarkText { get; set; }
 
-		public virtual Place Place { get; set; }
+		public Place Place { get; set; }
 	}
 }
