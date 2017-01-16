@@ -43,6 +43,14 @@ namespace Findit.API
 			return Ok();
 		}
 
+		[HttpPut]
+		[Route("UpdateBookmark")]
+		public IActionResult Put([FromBody]BookmarkDto bookmark) 
+		{
+			_bookmarkService.UpdateBookmark(User.Identity.GetClaim("name"), bookmark);
+			return Ok();
+		}
+
 		// DELETE: api/Bookmarks/RemoveBookmark/:placeId
 		[HttpDelete]
 		[Route("RemoveBookmark/{placeId}")]

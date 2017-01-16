@@ -48,6 +48,14 @@ namespace Findit.API.Services.BookmarkService
             _bookmarksesRepository.Insert(entity);
         }
 
+        public void UpdateBookmark(string username, BookmarkDto bookmark) 
+        {
+            bookmark.AuditUpdate(username);
+            var entity = Mapper.Map<Bookmark>(bookmark);
+
+            _bookmarksesRepository.Replace(entity);
+        }
+
         public void RemoveBookmark(string username, string placeId)
         {
             var bookmark = _bookmarksesRepository.First(item => item.Place.PlaceId.Equals(placeId) && item.CreatedBy.Equals(username));

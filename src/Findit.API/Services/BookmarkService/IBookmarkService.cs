@@ -10,6 +10,7 @@ namespace Findit.API.Services.BookmarkService
         BookmarkDto GetBookmarkById(string id);
         BookmarkDto GetBookmarkByUsernameAndPlaceId(string username, string placeId);
         void AddBookmark(string username, BookmarkDto bookmark);
+        void UpdateBookmark(string username, BookmarkDto bookmark);
         void RemoveBookmark(string username, string placeId);
     }
 }
