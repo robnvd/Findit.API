@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Findit.API.Configuration;
@@ -13,7 +12,7 @@ using Microsoft.Extensions.Options;
 
 namespace Findit.API
 {
-	public class ReviewsService : BaseService, IReviewsService
+    public class ReviewsService : BaseService, IReviewsService
 	{
 		private readonly ReviewsRepository _reviewsRepository;
 

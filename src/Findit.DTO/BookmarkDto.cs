@@ -1,9 +1,8 @@
-﻿using System;
-using Findit.DTO.Base;
+﻿using Findit.DTO.Base;
 
 namespace Findit.DTO
 {
-	public class BookmarkDto : Dto
+    public class BookmarkDto : Dto
 	{
 		public string PlaceId { get; set; }
 

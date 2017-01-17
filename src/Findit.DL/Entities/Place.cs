@@ -1,5 +1,4 @@
-﻿using System;
-using Findit.DL.Entities.Base;
+﻿using Findit.DL.Entities.Base;
 
 namespace Findit.DL.Entities
 {

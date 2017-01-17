@@ -1,11 +1,10 @@
-﻿using System;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Linq;
 using System.Security.Principal;
 
 namespace Findit.API.Core
 {
-	public static class ClaimExtensions
+    public static class ClaimExtensions
 	{
 		public static string GetClaim(this IIdentity claimsIdentity, string claimType)
 		{

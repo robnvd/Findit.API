@@ -1,9 +1,8 @@
-﻿using System;
-using Findit.DTO.Base;
+﻿using Findit.DTO.Base;
 
 namespace Findit.DTO
 {
-	public class ReviewDto : ApprovedDto
+    public class ReviewDto : ApprovedDto
 	{
 		public string PlaceId { get; set; }
 

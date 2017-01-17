@@ -7,14 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Findit.API.Core;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Linq;
 
 namespace Findit.API
 {
-	public class Startup
+    public class Startup
 	{
 		public Startup(IHostingEnvironment env)
 		{

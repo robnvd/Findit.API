@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Findit.DTO;
 
 namespace Findit.API.Services.BookmarkService

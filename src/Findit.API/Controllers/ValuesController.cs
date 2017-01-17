@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Findit.API.Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Findit.API.Controllers
 {
-	public class ValuesController : BaseController
+    public class ValuesController : BaseController
 	{
 		[AllowAnonymous]
 		// GET api/values

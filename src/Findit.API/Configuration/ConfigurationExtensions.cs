@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 namespace Findit.API
 {
-	public static class ConfigurationExtensions
+    public static class ConfigurationExtensions
 	{
 		public static T Get<T>(this IConfiguration config, string key) where T : new()
 		{

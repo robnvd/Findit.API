@@ -1,9 +1,8 @@
-﻿using System;
-using Findit.DTO;
+﻿using Findit.DTO;
 
 namespace Findit.API
 {
-	public interface IPlacesService
+    public interface IPlacesService
 	{
 		void UpdateCachedPlace(PlaceDto place);
 	}

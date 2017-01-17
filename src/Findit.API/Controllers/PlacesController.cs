@@ -1,5 +1,4 @@
-﻿using System;
-using Findit.API.Core;
+﻿using Findit.API.Core;
 using Findit.DTO;
 using Microsoft.AspNetCore.Mvc;
 

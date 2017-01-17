@@ -1,14 +1,11 @@
-using System;
 using Findit.API.Core;
 using Findit.DTO;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Findit.API
 {
-	public class ReviewsController : BaseController
+    public class ReviewsController : BaseController
 	{
 		private readonly IReviewsService _reviewsService;
 

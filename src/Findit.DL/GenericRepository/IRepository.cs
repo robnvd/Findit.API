@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Findit.DL.Entities;
 using Findit.DL.Entities.Base;
 using MongoDB.Driver;
 

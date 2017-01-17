@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Findit.DTO;
 
 namespace Findit.API
 {
-	public interface IReviewsService
+    public interface IReviewsService
 	{
 		IEnumerable<ReviewDto> GetReviewsByUser(string username);
 		ReviewDto GetReviewById(string id);

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Security.Claims;
-using Findit.API.Core;
+﻿using Findit.API.Core;
 using Findit.API.Services.BookmarkService;
 using Findit.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Findit.API
 {
-	public class BookmarksController : BaseController
+    public class BookmarksController : BaseController
 	{
 		private readonly IBookmarkService _bookmarkService;
 

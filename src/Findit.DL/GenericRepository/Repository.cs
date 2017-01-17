@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using Findit.DL.DBContext;
-using Findit.DL.Entities;
 using Findit.DL.Entities.Base;
 using MongoDB.Driver;
 using Polly;

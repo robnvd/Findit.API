@@ -1,11 +1,9 @@
-﻿using System;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Cors;
 
 namespace Findit.API.Core
 {
-	[Authorize]
+    [Authorize]
 	[Route("api/[controller]")]
 	public class BaseController : Controller
 	{
