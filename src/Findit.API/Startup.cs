@@ -35,7 +35,7 @@ namespace Findit.API
 
 			services.AddCors(options =>
 			{
-				options.AddPolicy("AllowAll", builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+				options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 			});
 
 			services.AddOptions();
